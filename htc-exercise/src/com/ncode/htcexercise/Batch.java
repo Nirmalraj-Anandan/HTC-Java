@@ -1,5 +1,8 @@
 package com.ncode.htcexercise;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,21 +17,30 @@ import java.util.List;
  | Created:	03/20/2018                                       |
  | Author: 	                                                 |
  | Revisions:                                                |
+ |	03/24/2018 - Updated date format and printing batch 	 |
+ |				 details.									 |
 +------------------------------------------------------------+
 */
 
 public class Batch {
 
-	private int batchCode;
+	private String batchCode;
 	private Date startDate;
 	private Date endDate;
 	private Trainee[] traineeArr;
+	
+	static DateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+	
+		@Override
+	public String toString() {
+		return " Batch     :" + batchCode + "\n startDate :" + startDate + "\n endDate   :" + endDate + "\n Trainee Details :\n";
+	}
 
-	public int getBatchCode() {
+	public String getBatchCode() {
 		return batchCode;
 	}
 
-	public void setBatchCode(int batchCode) {
+	public void setBatchCode(String batchCode) {
 		this.batchCode = batchCode;
 	}
 
@@ -111,21 +123,31 @@ public class Batch {
 		Trainee[] testTraineeArr = firstBatch.getTraineeArr();
 
 		try {
+			
+			firstBatch.setBatchCode("JAVA1001");
+			firstBatch.setStartDate(sdf.parse("03-04-2018"));
+			firstBatch.setEndDate(sdf.parse("04-04-2018"));
+			
+			System.out.println(firstBatch.toString());
 
 			// list all trainees in the batch
 			for (Trainee tra : testTraineeArr) {
 				// if(tra != null) {
-				System.out.println(tra.getTraineeName() + " with id " + tra.getTraineeId() + " can be reached at "
-						+ tra.getContactNo());
-				System.out.println(tra.toString() + "\n");
+				//System.out.println(tra.getTraineeName() + " with id " + tra.getTraineeId() + " can be reached at "
+				//		+ tra.getContactNo());
+				System.out.println(tra.toString());
 				// }
 				// else {
 				// break;
 				// }
 			}
-		} catch (NullPointerException e) {
+		} catch (ParseException e) { 
+			System.out.println("Probable error in date fields.");
+		}catch (NullPointerException e) {
 			System.out.println("Test: Empty/Null/No Trainee instance in the array.");
 		}
+		
+		System.out.println("\n" + "Search trainee by id:");
 
 		// search for trainee using his/her id
 		// if a trainee is not found then throw user defined exception
@@ -143,6 +165,9 @@ public class Batch {
 		// list all trainees of a particular gender
 		// exception not handled
 		// change input parameter other than male/female to throw exception
+		
+		System.out.println("\n" + "Search trainee's by gender:");
+		
 		for (Trainee tra1 : firstBatch.getTraineeByGender("Male")) {
 			System.out.println(tra1.toString());
 		}
