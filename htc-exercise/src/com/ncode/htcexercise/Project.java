@@ -19,6 +19,8 @@ import java.util.Objects;
 
 public class Project implements Serializable {
 
+
+	private static final long serialVersionUID = 3084894280628663868L;
 	private String projectId;
 	private String projectName;
 	private String projectHead;
