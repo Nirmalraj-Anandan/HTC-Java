@@ -19,6 +19,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Trainee implements Serializable {
 
+	private static final long serialVersionUID = 447248599615659480L;
+	
 	private int traineeId;
 	private String traineeName;
 	private long contactNo;
@@ -26,7 +28,7 @@ public class Trainee implements Serializable {
 	private String gender;
 	private int age;
 
-	private static final AtomicInteger count = new AtomicInteger(1000);
+	private static AtomicInteger count = new AtomicInteger(1000);
 
 	@Override
 	public int hashCode() {

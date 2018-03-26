@@ -15,6 +15,8 @@ package com.ncode.htcexercise;
 */
 
 public class TraineeNotFoundException extends Exception{
+
+	private static final long serialVersionUID = 2264944791060152071L;
 	private static String excepMsg1 = "Trainee with id ";
 	private static String excepMsg2 = " not found. Please verify id.";
 	

@@ -10,7 +10,7 @@ import java.util.List;
 /*
 +------------------------------------------------------------+
  | Module Name: Batch	                                     |
- | Module Purpose: emulate a programme batch with trainees   |
+ | Module Purpose: emulate a programme batch with trainees.  |
  | Inputs: 													 |
  | Outputs:                                                  |
  | Throws: user defined exception                            |
